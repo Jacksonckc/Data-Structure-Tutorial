@@ -9,7 +9,7 @@
 
 - Introduction
 - Common Usage of Queue
-- Common Queue Operation
+- Common Queue Operation & Efficiency
 - Example
 - Problem to Solve
 
@@ -19,14 +19,16 @@
 - Linked List Manipulation
 - Search within a Linked List
 - Linked List Pros and Cons over Dynamic Array
+- Linked List Operation & Efficiency
 - Example
 - Problem to Solve
 
 ## IV. [Tree](./3-tree.md)
 
 - Introduction
-- Search within a tree
-- Tree insertion
-- Display a tree
+- Search within a Tree
+- Tree Insertion
+- Display a Tree
+- Tree Operation & Efficiency
 - Example
 - Problem to Solve
