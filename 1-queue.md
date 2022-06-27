@@ -114,9 +114,6 @@ In the following example, some customers are lining up for a roller coaster ride
 queue = []
 
 # Enqueue function
-queue = []
-
-# Enqueue function
 def enqueue(customer, special = False):
     # check if the customer has a special ticket
     if special == False:
