@@ -12,7 +12,7 @@ Queues are commonly used in places where overcapacity occurs. If there is no ove
 
 You will see queues are restaurants, postal office, grocery stores, and etc. However, not all the queues are physically present in real life.
 
-Queues are commonly used via internet as well! Since there is no a physical queue line, we have created a queue data structure which helps maintaining order in the virual life.
+Queues are commonly used via internet as well! Since there is no a physical queue line, we have created a queue data structure which helps maintaining order in the virtual life.
 
 ![Online Queue](./images/online-queue.jpeg)
 
@@ -44,16 +44,6 @@ queue.append(item)
 
 The performance of this operation is O(1).
 
-## Enqueue to a specific location:
-
-We sometimes will have to insert an item to the beginning of the queue, or in the middle of the queue. This situation is rare, however, to accomplish this, we can pass in the index location to indicate which position we want to insert the item.
-
-```python
-queue.insert([position], item)
-```
-
-The performance of this operation is O(n), because we have to push all the items after the inserting position back a position in the list.
-
 ## Dequeue:
 
 We need to have a way for an item to exist the queue, the most common way to exist an item is to pop the item that is located at the beginning of a queue.
@@ -66,17 +56,9 @@ del queue[0]
 
 The performance of this operation is O(n), because we have to push all the items after the first item in the list forward a position.
 
-## Dequeue from a specific location:
+### Note:
 
-We can also remove an item from a specific location in the queue.
-
-```python
-queue.pop([index])
-# or
-del queue[[index]]
-```
-
-The performance of this operation is O(n), because we have to push all the items after the selected item in the list forward a position.
+There are better ways to accomplish dequeue operation, however, we will be learning the simpliest (Not the most efficient) way in this course. One better data structure to use in terms of dequeuing is to use a linked list, which has O(1) performance for dequeue operation.
 
 ## Get the size of a queue:
 
@@ -97,6 +79,28 @@ if len(queue) == 0
 ```
 
 The performance of this operation is O(1).
+
+## Enqueue to a specific location:
+
+Even though this is not one of the queue operations, we sometimes will have to insert an item to the beginning of the queue, or in the middle of the queue. This situation is rare, however, to accomplish this, we can pass in the index location to indicate which position we want to insert the item.
+
+```python
+queue.insert([position], item)
+```
+
+The performance of this operation is O(n), because we have to push all the items after the inserting position back a position in the list.
+
+## Dequeue from a specific location:
+
+Another situation we have to use customized non-queue operation, so we can also remove an item from a specific location in the queue.
+
+```python
+queue.pop([index])
+# or
+del queue[[index]]
+```
+
+The performance of this operation is O(n), because we have to push all the items after the selected item in the list forward a position.
 
 ## IV. Example: Queue to a roller coaster at Disney
 

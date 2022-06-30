@@ -13,9 +13,7 @@ def enqueue(caller):
         queue.insert(0, caller)
 
 def dequeue(caller = ''):
-    if len(queue) == 0:
-        pass
-    else:
+    if len(queue) != 0:
         if caller == '':
             # Dequeue from the end
             queue.pop(0)
