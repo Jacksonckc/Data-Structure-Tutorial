@@ -18,7 +18,6 @@
 - Structure
 - Linked List Manipulation
 - Search within a Linked List
-- Linked List Pros and Cons over Dynamic Array
 - Linked List Operation & Efficiency
 - Example
 - Problem to Solve
