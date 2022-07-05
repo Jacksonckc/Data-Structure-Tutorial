@@ -130,28 +130,28 @@ Adding the middle is the most complex process of the linked list manipulation, l
 ### Adding:
 
 1. Create a new node
-2. Set self.next of node A to be the new node
-
-```python
-A.next = new_node
-```
-
-3. Set self.prev of the new node to node A
+2. Set self.prev of the new node to node A
 
 ```python
 new_node.prev = A
 ```
 
-4. Set self. next of the new node to be the next node after node A
+3. Set self. next of the new node to be the next node after node A
 
 ```python
 new_node.next = A.next
 ```
 
-5. Set self. prev of the next node of the A node to be the new node
+4. Set self. prev of the next node of the A node to be the new node
 
 ```python
 A.next.prev = new_node
+```
+
+5. Set self.next of node A to be the new node
+
+```python
+A.next = new_node
 ```
 
 To help you understand this process, you can incorporate the method of hooking up 2 sets of cabins using the above example. The only difference is that we are not changing our head or tail of the train, we are only hooking a cabin up to the middle of the train.
@@ -213,6 +213,138 @@ Using the same concept, we can use print() function to display each node value i
 | length        | O(1)        | Built-in python function                                                                                                                                                                     |
 | empty         | O(1)        | Just check the length to see if it's 0                                                                                                                                                       |
 
-## Example
+## Example: Shopping at a grocery store
+
+The example below is a real life application of the linked list data structure. We sometimes need to line up for checking out at a grocery store, this is where a linked list structure come in to play.
+
+### Requirements:
+
+1. Customers can enter the queue from the end. (Add to the tail of the linked list)
+2. If a customer has a friend or family member who is already in the queue, he/she can cut in after him/her. (Insert to the middle)
+3. If a customer is a employee of the store, he/she can go to the front of the line. (Add to the head of the linked list)
+4. A customer can be asked to leave the queue/line at anytime. (Removing from the linked list.)
+5. The boss needs to be able to see all customers in the line. (Loop through the linked list)
+
+```python
+class LinkedList:
+    def __init__(self):
+        # Initialize an empty linked list.
+        self.head = None
+        self.tail = None
+
+
+    class Node:
+        def __init__(self, data):
+            # Initialize the node to the data provided.  Initially
+            # the links are unknown so they are set to None.
+            self.data = data
+            self.next = None
+            self.prev = None
+
+    def employee_insertion(self, name):
+        new_node = LinkedList.Node(name)
+
+        if self.head is None:
+            self.head = new_node
+            self.tail = new_node
+
+        else:
+            new_node.next = self.head
+            self.head.prev = new_node
+            self.head = new_node
+
+    def remove_head(self):
+        # Remove the first node (i.e. the head) of the linked list.
+        if self.head == self.tail:
+            self.head = None
+            self.tail = None
+
+        elif self.head is not None:
+            self.head.next.prev = None
+            self.head = self.head.next
+
+    def customer_insertion(self, name):
+        new_node = LinkedList.Node(name)
+
+        if self.tail is None:
+            self.head = new_node
+            self.tail = new_node
+
+        else:
+            new_node.prev = self.tail
+            self.tail.next = new_node
+            self.tail = new_node
+
+    def remove_tail(self):
+        if self.tail == self.head:
+            self.head = None
+            self.tail = None
+        elif self.tail is not None:
+            self.tail.prev.next = None
+            self.tail = self.tail.prev
+
+    def customer_with_fam_or_friend_insertion(self, friend_or_fam_name ,name):
+        new_node = LinkedList.Node(name)
+
+        current = self.head
+        while current is not None:
+            if current.data == friend_or_fam_name:
+                if current == self.tail:
+                    self.insert_tail(name)
+                else:
+                    new_node.prev = current
+                    new_node.next = current.next
+                    current.next.prev = new_node
+                    current.next = new_node
+                return
+
+            current = current.next
+
+    def remove_customer_from_line(self, name):
+        current = self.head
+        while current is not None:
+            if current.data == name:
+                if current.prev == None:
+                    self.remove_head()
+                elif current.next == None:
+                    self.remove_tail()
+                else:
+                    current.prev.next = current.next
+                    current.next.prev = current.prev
+                return
+            current = current.next
+
+    def all_customer_names(self):
+        current = self.head
+
+        while current is not None:
+            print(current.data)
+            current = current.next
+
+list = LinkedList()
+
+list.customer_insertion("Jackson")
+# The Line: Jackson
+
+list.employee_insertion("Talia")
+# The Line: Talia, Jackson
+
+list.customer_insertion("Bob")
+# The Line: Talia, Jackson, Bob
+
+list.customer_insertion("James")
+# The Line: Talia, Jackson, Bob, James
+
+list.customer_insertion("Eric")
+# The Line: Talia, Jackson, Bob, James, Eric
+
+list.customer_with_fam_or_friend_insertion("Jackson", "David")
+# The Line: Talia, Jackson, David, Bob, James, Eric
+
+list.remove_customer_from_line('James')
+# The Line: Talia, Jackson, David, Bob, Eric
+
+list.all_customer_names()
+```
 
 ## Problem to Solve
