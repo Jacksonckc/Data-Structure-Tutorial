@@ -348,3 +348,74 @@ list.all_customer_names()
 ```
 
 ## Problem to Solve
+
+You are developing a game, the game is call 'snake'. You want it to be different than the regular snake games and you have added some special features to it.
+
+1. Your snake needs to be linked list.
+2. Your snake should consist different section, each section should have a color.
+3. Your can use the same color for sections.
+4. The snake will become longer when it runs into food. The food has different colors which give a section to the snake.
+5. The food also has an indicator which indicates whether is helps the snake to grow the head or the tail.
+6. The snake can't eat rotten food, if it did, the rotten food will take away some of the section of the snake.
+7. The rotten food will have an indicator which will say a color, all the sections with that color will be gone from the snake.
+
+```python
+class Snake:
+    def __init__(self):
+        # Initialize an empty linked list.
+        self.head = None
+        self.tail = None
+
+
+    class Section:
+        def __init__(self, data):
+            # Initialize the section to the data provided.  Initially
+            # the links are unknown so they are set to None.
+            self.data = data
+            self.next = None
+            self.prev = None
+
+    def insert_head(self, color):
+        # create a new section
+        # create insertion logics
+
+    def remove_head(self):
+        # deletion logics
+
+    def insert_tail(self, color):
+        # create a new section
+        # create insertion logics
+
+    def remove_tail(self):
+        # deletion logics
+
+    def add_middle()
+        # We don't need this function for the game, you can skip!
+
+    def remove_middle(self, color):
+        # deletion logics
+
+        # Tip: we don't need to return here once the first matching section is found, we continue the process until all the matching sections are deleted.
+
+
+    def show_snake_sections(self):
+        # Loop through and show each section's data
+
+snake = Snake()
+
+food = [(0, 'red'),(0, 'red'),(0, 'orange'),(1, 'blue'),(2, 'red'),(0, 'red'),(1, 'yellow')]
+
+for i in food:
+    if i[0] == 0:
+        snake.insert_head(i[1])
+    elif i[0] == 1:
+        snake.insert_tail(i[1])
+    else:
+        snake.remove_middle(i[1])
+
+
+snake.show_snake_sections()
+# red, orange, blue, yellow
+```
+
+See the solution here: [Solution](./2-linked-list-solution.py)
