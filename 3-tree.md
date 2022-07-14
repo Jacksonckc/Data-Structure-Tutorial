@@ -125,7 +125,7 @@ def _traverse_forward(self, node):
 		yield from self._traverse_forward(node.right)
 ```
 
-By alterating the `__iter__` built-in function, we can do some pretty amazing things! We will call the `_traverse_forward` function in the `__iter__` function starting with the `root` node by passing in the node to the function. By passing in `node` to the `_travers_forward` funciton, we use recursive functions to yield each of the node in the tree back to the `__iter__` function by using keyword `yield from` and `yield`. (Again, don't worry too much about the implementation of yield and yield from, you will learn about this later.)
+By alterating the `__iter__` built-in function, we can do some pretty amazing things! We will call the `_traverse_forward` function in the `__iter__` function starting with the `root` node by passing in the node to the function. By passing in `node` to the `_travers_forward` funciton, we use recursive functions to yield each of the nodes in the tree back to the `__iter__` function by using keyword `yield from` and `yield`. (Again, don't worry too much about the implementation of yield and yield from, you will learn about this later.)
 
 To use the built-in `__iter__` function, we simply use a for loop:
 
@@ -153,7 +153,7 @@ for i in tree:
 
 You are working in a dentist office, part of your job is to organize the patients'/clients' files. You want to organize them in a way that is easy for you to find them in the future when you need them. Below are the requirements for your algorithm that you want to build for the filing system.
 
-1. Each of the file should have a unique id.
+1. Each of the files should have a unique id.
 2. Your filing system should be able to handle all kinds of files inserting into the original pile.
 3. Your filing system should organize the files in order using their id.
 4. You should be able to pull out a patient's file using his/her id with O(log n) efficiency.
@@ -254,7 +254,7 @@ for file in system:
 
 The example problem above has probably overwhelmed you, I hope this problem we are about to solve will help you get a deeper understanding of tree and it's structrue. We will continue to use the same senario above with more requirements to the system. Here are the requirements:
 
-1. Each of the file should have a unique id.
+1. Each of the files should have a unique id.
 2. Your filing system should be able to handle all kinds of files inserting into the original pile.
 3. Your filing system should organize the files in order using their id.
 4. You should be able to pull out a patient's file using his/her id with O(log n) efficiency.
